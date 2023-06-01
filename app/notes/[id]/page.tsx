@@ -1,12 +1,17 @@
-const getNote = async (noteId: string) => {
+import styles from "../Notes.module.css";
+
+async function getNote(noteId: string) {
   const res = await fetch(
-    `http://127.0.0.1:8090/api/collections/notes/records/${noteId}`
+    `http://127.0.0.1:8090/api/collections/notes/records/${noteId}`,
+    {
+      next: { revalidate: 10 },
+    }
   );
   const data = await res.json();
   return data;
-};
+}
 
-const NotePage = async ({ params }) => {
+export default async function NotePage({ params }: any) {
   const note = await getNote(params.id);
 
   return (
@@ -19,6 +24,4 @@ const NotePage = async ({ params }) => {
       </div>
     </div>
   );
-};
-
-export default NotePage;
+}

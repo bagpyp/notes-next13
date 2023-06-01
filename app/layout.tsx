@@ -8,7 +8,9 @@ export default function RootLayout({
 }) {
   return (
     <html>
-      <head></head>
+      <head>
+        <title>Notes!</title>
+      </head>
       <body>
         <main>
           <nav>

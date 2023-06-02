@@ -15,17 +15,18 @@ const getNotes = async () => {
   return data?.items as any[];
 };
 
-const NotesPage = async () => {
+export default async function NotesPage() {
   const notes = await getNotes();
 
   return (
     <div>
       <h1>Notes</h1>
-      <div>
+      <div className={styles.grid}>
         {notes?.map((note) => {
           return <Note key={note.id} note={note} />;
         })}
       </div>
+      
       <CreateNote />
     </div>
   );
@@ -44,5 +45,3 @@ const Note = ({ note }: any) => {
     </Link>
   );
 };
-
-export default NotesPage;

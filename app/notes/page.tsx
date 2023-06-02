@@ -3,8 +3,6 @@ import styles from "./Notes.module.css";
 import CreateNote from "./CreateNote";
 
 const getNotes = async () => {
-  // const db = new PocketBase("http://127.0.0.1:8090");
-  // const data = await db["records"].getList("notes");
   const res = await fetch(
     "http://127.0.0.1:8090/api/" +
       "collections/notes/records" +
